@@ -11,7 +11,7 @@
 - 
 
 
-##Comandos de git
+## Comandos de git
 - git init
 - git add .
 - git commit -m
