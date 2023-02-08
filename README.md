@@ -19,3 +19,10 @@
 - git push
 - git rm - rf
 - Prueba
+
+## Tipado Dinamico y Estatico
+- Tipado Estatico: Tengo que definir que tipo de dato 
+- Tipado Dinamico: Puedo  cambiar tipos de datos
+## Buenas Practicas
+- Definir que tipo de dato es mi variable
+- Nunca retornar una operación directamente, sino una variable que devuelva la operación 
