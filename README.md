@@ -26,3 +26,8 @@
 ## Buenas Practicas
 - Definir que tipo de dato es mi variable
 - Nunca retornar una operación directamente, sino una variable que devuelva la operación 
+## Librerías
+- Funciones Predefinidas para usarlas
+## Docstring
+- Sirve para explicar para que es una función en python 
+- Nos aparece al ejecutar la función, al llamarla
