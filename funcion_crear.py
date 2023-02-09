@@ -3,6 +3,6 @@ def crear(
     libro:str,
     diccionario:dict
 ) -> dict:
-        diccionario.update({'Nombre':nombre,'Libro Prestado':libro})
+        diccionario.update({nombre:libro})
         return diccionario
 
