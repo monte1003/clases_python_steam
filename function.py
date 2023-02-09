@@ -13,7 +13,8 @@ def area_rectangulo(
     """
     area = x * y
     return area
-base: float = float(input('Introduce la base del rectangulo: '))
-altura: float = float(input('Introduce la altura del rectángulo: '))
-result = area_rectangulo(base,altura)
-print(f'El área del rectángulo es: {result}')    
+    
+    base:float = float(input('Introduce la base del rectangulo: '))
+    altura:float = float(input('Introduce la altura del rectangulo: '))
+    result = area_rectangulo(base,altura)
+    print(f'El área del cuadrado es {result}')

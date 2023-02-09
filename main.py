@@ -5,7 +5,9 @@
 #Forma 2: function.area_rectangulo()
 
 from function import area_rectangulo
-base:float = float(input('Introduce la base del rectangulo: '))
-altura:float = float(input('Introduce la altura del rectangulo: '))
-result = area_rectangulo(base,altura)
-print(result)
+if __name__ == '__main__':
+    base:float = float(input('Introduce la base del rectangulo: '))
+    altura:float = float(input('Introduce la altura del rectangulo: '))
+    result:float = area_rectangulo(base,altura)
+    print(f'El área del rectángulo es {result}')
+    
