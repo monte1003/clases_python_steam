@@ -16,7 +16,7 @@ def crear(
     
         dict: Devuelve el diccionario con el usuario creado
     """
-    nombre.title()
+    nombre = nombre.title()
     diccionario.update({nombre:libro})
     return diccionario
 

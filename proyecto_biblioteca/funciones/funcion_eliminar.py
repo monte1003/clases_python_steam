@@ -17,5 +17,6 @@ def eliminar(
         
         
     """
+    nombre = nombre.title()
     diccionario.pop(nombre)
     return diccionario

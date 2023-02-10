@@ -16,5 +16,6 @@ def actualizar_usuario(
     
         dict: Devuelve el diccionario con el valor actualizado (el libro que pasamos como parámetro)
     """
+    usuario.title()
     diccionario[usuario] = libro
     return diccionario

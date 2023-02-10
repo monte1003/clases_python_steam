@@ -14,4 +14,5 @@ def visualizar_usuarios(
         
         dict: Devuelve el nombre de la persona y el valor accediendo a su valor por medio de la clave "persona" en nuestro diccionario
     """
+    persona = persona.title()
     print(f'\nEl usuario {persona} tiene el libro {diccionario[persona]}')
