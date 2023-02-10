@@ -1,9 +1,9 @@
 import os
-from funcion_crear import crear
-from funcion_eliminar import eliminar
-from actualizar import actualizar_usuario
-from visualizar import visualizar_usuarios
-from visualizar_2 import visualizar_total
+from proyecto_biblioteca.funciones.funcion_crear import crear
+from proyecto_biblioteca.funciones.funcion_eliminar import eliminar
+from proyecto_biblioteca.funciones.actualizar import actualizar_usuario
+from proyecto_biblioteca.funciones.visualizar import visualizar_usuarios
+from proyecto_biblioteca.funciones.visualizar_2 import visualizar_total
 usuarios = {}
 while True:
     menu = """
@@ -28,11 +28,13 @@ while True:
         case 2:
             print('\t\t\t\t\t\t\t\tEliminar Usuario')
             n = str(input('\nIngresa el nombre del usuario que deseas eliminar: '))
+            n.title()
             eliminar(n,usuarios)
             os.system('cls')
         case 3:
             print('\t\t\t\t\t\t\t\tActualizar Usuario')
             nombre:str = str(input('\nIngresa el nombre del usuario que va a prestar el nuevo libro: '))
+            n.title
             libro:str = str(input(f'Ingresa el nuevo libro que presto el usuario {nombre}: '))
             actualizar_usuario(nombre,libro, usuarios)
             os.system('cls')
@@ -46,6 +48,7 @@ while True:
             op = input('\n\tSelecciona una opcion: ')
             if op == '1':
                 n = str(input('\nIntroduce el nombre del usuario el cual deseas ver su información: '))
+                n.title()
                 visualizar_usuarios(n,usuarios)
             elif op == '2':
                 visualizar_total(usuarios)
