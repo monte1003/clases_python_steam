@@ -5,28 +5,23 @@ app = FastAPI()
 # Cada ruta ejecuta una función
 # "/" ruta raíz
 # Solo podemos tener una función por verbo en una ruta
-@app.get("/")
+@app.get("/hola")
 def hola():
     return {"Hello": "World"}
 
+# Esto es una ruta estatica
+#Area de un Cuadrado
+@app.get("/cuadrado/{lado}")
+def calcular(lado:float):
+    area = lado * lado
+    return f"El área del cuadrado es de {area}"
 
-@app.get("/adios")
-def adios():
-    return "adios mundo"
+@app.get("/edad/{nombre}/{edad}")
 
-
-@app.get("/pato")
-def diccionario():
-    return {
-        "Nombre":"Isaac",
-        "Apellido":"Monterrosa"   
-    }
-
-@app.get("/pepito")
-def mundo():
-    return f"El mundo es {2+2}"
-
-@app.get("/salcedo")
-def osasuna():
-    return [1,2,3,4,5]
-
+def mayor_menor(
+    nombre:str,
+    edad:int
+):
+    if edad>=18:
+        return f"{nombre} al tener {edad} años es mayor de edad"
+    return f"{nombre} al tener {edad} años es menor de edad"
