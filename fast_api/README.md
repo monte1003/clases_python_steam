@@ -8,4 +8,8 @@
 
 ## Instalar FastAPI
 1. Instalación de FastAPI ````pip install fastapi uvicon````
-2.  
+
+## Introducción FastAPI
+- @app.get("/") es un atributo de mi app, get (obtener)
+- "/" es mi ruta raíz
+- Solo podemos tener una función por verbo en una ruta
