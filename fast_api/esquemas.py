@@ -1,14 +1,12 @@
 
 from pydantic import BaseModel
 class PersonaBiblioteca(BaseModel):
-    id:str
+    id:int
     nombre:str
-    edad:str
+    edad:int
     libros:dict
     libro_prestado:str
     fecha_libro_prestado:str
     
 class PersonaActualizar(BaseModel):
-    id:str
     nombre:str
-    edad:str
