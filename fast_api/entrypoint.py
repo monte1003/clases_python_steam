@@ -1,27 +1,46 @@
 from fastapi import FastAPI
-from typing import Union
+from pydantic import BaseModel
 app = FastAPI()
-#Registramos una función en mi app en ruta (endpoint)
-# Cada ruta ejecuta una función
-# "/" ruta raíz
-# Solo podemos tener una función por verbo en una ruta
-@app.get("/hola")
-def hola():
-    return {"Hello": "World"}
 
-# Esto es una ruta estatica
-#Area de un Cuadrado
-@app.get("/cuadrado/{lado}")
-def calcular(lado:float):
-    area = lado * lado
-    return f"El área del cuadrado es de {area}"
+biblioteca = {}
+from esquemas import PersonaBiblioteca
+from esquemas import PersonaActualizar
 
-@app.get("/edad/{nombre}/{edad}")
 
-def mayor_menor(
-    nombre:str,
-    edad:int
-):
-    if edad>=18:
-        return f"{nombre} al tener {edad} años es mayor de edad"
-    return f"{nombre} al tener {edad} años es menor de edad"
+@app.get("/")
+def hello_world_check():
+    return {
+        "Titulo":"Biblioteca Steam",
+        "Version":"v0.0.1"
+    }
+    
+@app.get("/persona")
+def total():
+    return biblioteca
+
+@app.get("/personas/{id}")
+def personas_one(id:str):
+    return biblioteca[id]
+
+
+
+@app.post("/personas/{id}/{nombre}/{edad}/{libro_prestado}/{fecha_libro}")
+def personas_add(request:PersonaBiblioteca):
+    biblioteca_interna = {
+        "Nombre":request.nombre,
+        "Edad":request.edad,
+        "Libros":{
+            "Libro Prestado": request.libro_prestado,
+            "Fecha Libro Prestado":request.fecha_libro_prestado
+        }
+    }
+    biblioteca[request.id] = biblioteca_interna
+    
+
+@app.put("/personas/{id}/{nombre}/{edad}")
+
+def actualizar(request:PersonaActualizar):
+    for i in biblioteca[request.id]:
+        i.nombre = request.nombre
+        i.edad = request.edad
+        return biblioteca[request.id]

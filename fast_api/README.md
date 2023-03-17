@@ -13,3 +13,29 @@
 - @app.get("/") es un atributo de mi app, get (obtener)
 - "/" es mi ruta raíz
 - Solo podemos tener una función por verbo en una ruta
+### Ejecutar Servidor
+- Para ejecutar el servidor usamos el comando ````uvicorn entrypoint:app --reload```` para que se actualize solo 
+
+### Importando FastAPI
+- Para importar fastapi decimos lo siguiente ````from fastapi import FastAPI````
+
+### Creación de Objeto
+- Para crear un objeto de fastapi es ````app = FastAPI()````
+---
+# Buenas Prácticas
+### Buenas Prácticas
+- Documentación 
+- Comentarios
+- Organización (que sea legible)
+### Código (Buenas Prácticas)
+- Hello World Check
+- Crear un archivo por cada componente
+---
+
+# Verbos HTTP
+|metodo|accion DB|Uso|
+|--|--|--|
+|Post|Create|Crea un nuevo registro en nuestra base de datos
+|Get|Read|Acceder, Recuperar o leer información de nuestra base de datos
+|Put|Update|Actualiza Registros de nuestra base de datos|
+|Delete|Eliminar|Elimina registros de nuestra base de datos|
