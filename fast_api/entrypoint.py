@@ -28,7 +28,7 @@ def total():
     return biblioteca
 
 @app.get("/personas/{id}",tags=["Visualizar Usuario"])
-def personas_one(id:str):
+def personas_one(id:int):
     """
     Función que Visualiza la información de solo un usuario de mi base de datos
 
@@ -65,9 +65,10 @@ def personas_add(request:PersonaBiblioteca):
     biblioteca[request.id] = biblioteca_interna
     
 
-@app.put("/personas/{id}/{nombre}/{edad}",tags=["Actualizar Usuario"])
+@app.put("/personas/{id}/",tags=["Actualizar Usuario"])
 
-def actualizar(rr:PersonaActualizar):
+def actualizar(id:int,
+                rr:PersonaActualizar):
     """
 
     Args:
@@ -76,13 +77,10 @@ def actualizar(rr:PersonaActualizar):
     Returns:
         _type_: _description_
     """
-    for i in biblioteca[rr.id]:
-        i.nombre = rr.nombre
-        i.edad = rr.edad
-        return biblioteca[rr.id]
-
+    biblioteca[id]["Nombre"] = rr.nombre
+    return biblioteca[id]
 @app.delete("/personas/{id}/",tags=["Eliminar Usuario"])
-def eliminar(id:str):
+def eliminar(id:int):
     """
     Esta funcion elimina el usuario por medio de su id, accede a el y con el método .pop() lo eliminamos
     Args:
