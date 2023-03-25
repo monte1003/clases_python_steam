@@ -5,8 +5,9 @@ class PersonaBiblioteca(BaseModel):
     nombre:str
     edad:int
     libros:dict
+    id_libro:int
     libro_prestado:str
-    fecha_libro_prestado:str
+    
     
 class PersonaActualizar(BaseModel):
     nombre:str

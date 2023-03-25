@@ -39,3 +39,14 @@
 |Get|Read|Acceder, Recuperar o leer información de nuestra base de datos
 |Put|Update|Actualiza Registros de nuestra base de datos|
 |Delete|Eliminar|Elimina registros de nuestra base de datos|
+
+### OS
+- Es una librería que nos conecta y nos permite usar funciones del os
+- os.getcwd = ````Nos muestra en donde estamos parados (carpeta)````
+. os.system() = ````Imprime cadenas de texto en pantalla````
+
+### Variables de Entorno
+- Las variables de entorno son variables a las que se asignan valores externamente al programa Python. Los desarrolladores normalmente las establecen en la línea de comandos antes de invocar el ejecutable de Python. 
+- Afectan el código desde afuera, sin alterar sus lógicas
+- Para pasar nuestras variables de entorno usamos el comando ````from dotenv import load_dotenv````
+- Las variables de entorno se crean en un archivo ````.env```` dentro de la misma carpeta

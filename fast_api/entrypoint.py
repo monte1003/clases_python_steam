@@ -1,5 +1,13 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
+from dotenv import load_dotenv
+import os
+import datetime
+
+load_dotenv()
+NAME = os.getenv("NAME")
+VERSION = os.getenv("VERSION")
+print(NAME,VERSION)
 app = FastAPI(
     title="Mi Biblioteca",
     version="final"
@@ -13,8 +21,8 @@ from esquemas import PersonaActualizar
 @app.get("/",tags=["Home"])
 def hello_world_check():
     return {
-        "Titulo":"Biblioteca Steam",
-        "Version":"v0.0.1"
+        "Titulo":NAME,
+        "Version":VERSION  
     }
     
 @app.get("/persona",tags=["Biblioteca Total"])
@@ -42,7 +50,7 @@ def personas_one(id:int):
 
 
 
-@app.post("/personas/{id}/{nombre}/{edad}/{libro_prestado}/{fecha_libro}",tags=["Añadir Usuario"])
+@app.post("/personas/{id}/{nombre}/{edad}/{id_libro}/{libro_prestado}/{fecha_libro}/",tags=["Añadir Usuario"])
 def personas_add(request:PersonaBiblioteca):
     """
     Función que añade un usuario a nuestra la base de datos, la biblioteca
@@ -54,16 +62,35 @@ def personas_add(request:PersonaBiblioteca):
     Return:
         Esta función no retorna nada pues su unica función es agregar ese usuario a nuestra biblioteca.
     """
+    libros_interno = {
+        request.id_libro:{
+            "Libro Prestado":request.libro_prestado,
+            "Fecha Prestamo": datetime.datetime.today()    
+            }
+    }
     biblioteca_interna = {
         "Nombre":request.nombre,
         "Edad":request.edad,
-        "Libros":{
-            "Libro Prestado": request.libro_prestado,
-            "Fecha Libro Prestado":request.fecha_libro_prestado
-        }
+        "Libros":[]
     }
+    biblioteca_interna["Libros"].append(libros_interno)
+    
+
+    
     biblioteca[request.id] = biblioteca_interna
     
+
+@app.post("/personas/{id}/{id_libro}/{libro_prestado}",tags=["Agregar Libro"])
+def agregar_libro(id:int,
+                libro_prestado:str,
+                id_libro:int):
+    libros_interno = {
+        id_libro:{
+            "Libro Prestado":libro_prestado,
+            "Fecha Prestamo": datetime.datetime.today()    
+        }
+    }
+    biblioteca[id]["Libros"].append(libros_interno)
 
 @app.put("/personas/{id}/",tags=["Actualizar Usuario"])
 
@@ -88,3 +115,10 @@ def eliminar(id:int):
     """
     biblioteca.pop(id)
     
+
+@app.delete("/personas/{id}/{id_libro}/",tags=["Eliminar Libro"])
+def eliminar_libro(id:int,
+                    id_libro:int):
+    for i in biblioteca[id]["Libros"]:
+        if id_libro in i:
+            biblioteca[id]["Libros"].remove(i)
